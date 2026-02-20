@@ -16,7 +16,7 @@ export function KanbanColumn({ column, cards, onAddCard, onDeleteColumn }: Props
   const { setNodeRef } = useDroppable({ id: column.id })
 
   return (
-    <div className="bg-zinc-800 rounded-xl w-72 shrink-0 flex flex-col max-h-full">
+    <div className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl w-72 shrink-0 flex flex-col max-h-full shadow-lg shadow-black/20">
       <ColumnHeader
         title={column.title}
         cardCount={cards.length}

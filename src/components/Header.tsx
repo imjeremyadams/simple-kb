@@ -17,7 +17,7 @@ export function Header({ onAddColumn }: Props) {
   }
 
   return (
-    <header className="flex items-center gap-4 px-6 py-4">
+    <header className="flex items-center gap-4 px-6 py-4 border-b border-white/10 backdrop-blur-md bg-white/5">
       <h1 className="text-xl font-bold text-zinc-100">Simple KB</h1>
       {adding ? (
         <form onSubmit={handleSubmit} className="flex items-center gap-2">
@@ -26,7 +26,7 @@ export function Header({ onAddColumn }: Props) {
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             placeholder="Column name"
-            className="bg-zinc-800 rounded px-2 py-1 text-sm text-zinc-100 placeholder-zinc-500 outline-none focus:ring-2 focus:ring-blue-500"
+            className="bg-white/10 border border-white/10 rounded px-2 py-1 text-sm text-white placeholder-white/40 outline-none focus:ring-2 focus:ring-blue-500/50"
           />
           <button
             type="submit"
@@ -45,7 +45,7 @@ export function Header({ onAddColumn }: Props) {
       ) : (
         <button
           onClick={() => setAdding(true)}
-          className="text-sm text-zinc-400 hover:text-zinc-200 bg-zinc-800 hover:bg-zinc-700 px-3 py-1 rounded transition-colors"
+          className="text-sm text-white/50 hover:text-white bg-white/10 hover:bg-white/15 border border-white/10 px-3 py-1 rounded transition-colors"
         >
           + Add column
         </button>
