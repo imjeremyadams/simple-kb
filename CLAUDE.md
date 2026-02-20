@@ -2,6 +2,27 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Feature Development Workflow
+
+When starting any new feature, always follow this workflow:
+
+1. **Brainstorm** (`/globalcoder-workflow:brainstorm`) - Explore the idea, ask clarifying questions, present design options, and write a design document
+2. **Write Plan** (`/globalcoder-workflow:writing-plans`) - Create a detailed implementation plan with bite-sized tasks
+3. **Execute Plan** (`/globalcoder-workflow:subagent-driven-development` or `/globalcoder-workflow:executing-plans`) - Implement the plan task-by-task with code reviews
+
+Never skip straight to coding. Always start with brainstorming to ensure we understand requirements and have a solid design before implementation.
+
+## Definition of Done
+
+A task is NOT complete until ALL of the following are true:
+
+1. **Tests written** - Unit tests for new hooks, components, and utilities
+2. **Tests passing** - Run `npm test -- --run` and confirm all tests pass
+3. **Build passing** - Run `npm run build` with no errors
+4. **Code committed** - Changes committed with descriptive message
+
+**CRITICAL**: Never mark a task complete or move to the next task until tests are written AND passing. If tests fail, fix them before proceeding.
+
 ## Project Overview
 
 Simple Kanban board app built to demonstrate AI-assisted development at a meetup. Prioritize good structure, readable code, and fast iteration over cleverness.

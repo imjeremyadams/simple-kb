@@ -17,8 +17,8 @@ export function Header({ onAddColumn }: Props) {
   }
 
   return (
-    <header className="flex items-center gap-4 px-6 py-4 border-b border-white/10 backdrop-blur-md bg-white/5">
-      <h1 className="text-xl font-bold text-zinc-100">Simple KB</h1>
+    <header className="flex items-center gap-4 px-6 py-4 border-b border-white/10 backdrop-blur-md bg-white/5 mb-6">
+      <h1 className="text-xl font-bold text-zinc-100">AI Collective Springfield MO - Simple Kanban Demo</h1>
       {adding ? (
         <form onSubmit={handleSubmit} className="flex items-center gap-2">
           <input
