@@ -11,6 +11,7 @@ import {
   useSensors,
 } from "@dnd-kit/core"
 import { loadBoard, saveBoard } from "./data/storage"
+import { celebrate } from "./lib/celebrate"
 import { addCard, moveCard, addColumn, deleteColumn } from "./data/board-helpers"
 import type { Board, Card } from "./types"
 import { Header } from "./components/Header"
@@ -88,6 +89,25 @@ export default function App() {
     const sourceIndex = sourceCol.cardIds.indexOf(activeId)
     const destIndex = destCol.cardIds.indexOf(overId)
     update(moveCard(board, activeId, sourceCol.id, sourceIndex, destCol.id, destIndex === -1 ? destCol.cardIds.length : destIndex))
+
+    // Celebrate when a card moves into a "Done" column from a different column
+    if (
+      destCol.title.toLowerCase() === "done" &&
+      sourceCol.id !== destCol.id
+    ) {
+      // Get card position from the DOM for confetti origin
+      const el = document.getElementById(activeId)
+      if (el) {
+        const rect = el.getBoundingClientRect()
+        celebrate({
+          x: (rect.left + rect.width / 2) / window.innerWidth,
+          y: (rect.top + rect.height / 2) / window.innerHeight,
+        })
+      } else {
+        // Fallback: center of screen
+        celebrate({ x: 0.5, y: 0.5 })
+      }
+    }
   }
 
   return (

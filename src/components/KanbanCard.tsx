@@ -18,6 +18,7 @@ export function KanbanCard({ card }: Props) {
 
   return (
     <div
+      id={card.id}
       ref={setNodeRef}
       style={style}
       {...attributes}
