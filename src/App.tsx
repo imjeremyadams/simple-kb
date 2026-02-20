@@ -20,6 +20,7 @@ import { KanbanColumn } from "./components/KanbanColumn"
 export default function App() {
   const [board, setBoard] = useState<Board>(loadBoard)
   const [activeCard, setActiveCard] = useState<Card | null>(null)
+  const [dragSourceColumnId, setDragSourceColumnId] = useState<string | null>(null)
 
   // Persist every change
   const update = useCallback((next: Board) => {
@@ -45,8 +46,12 @@ export default function App() {
   )
 
   function handleDragStart(event: DragStartEvent) {
-    const card = board.cards[event.active.id as string]
+    const activeId = event.active.id as string
+    const card = board.cards[activeId]
     setActiveCard(card ?? null)
+    // Remember which column the card started in (before handleDragOver moves it)
+    const sourceCol = board.columns.find((c) => c.cardIds.includes(activeId))
+    setDragSourceColumnId(sourceCol?.id ?? null)
   }
 
   function handleDragOver(event: DragOverEvent) {
@@ -90,10 +95,14 @@ export default function App() {
     const destIndex = destCol.cardIds.indexOf(overId)
     update(moveCard(board, activeId, sourceCol.id, sourceIndex, destCol.id, destIndex === -1 ? destCol.cardIds.length : destIndex))
 
-    // Celebrate when a card moves into a "Done" column from a different column
+    // Celebrate when a card moves into a "Done" column from a different column.
+    // Use dragSourceColumnId (captured at drag start) because handleDragOver
+    // already moved the card during the drag, so sourceCol === destCol here.
+    const originalSourceCol = board.columns.find((c) => c.id === dragSourceColumnId)
     if (
       destCol.title.toLowerCase() === "done" &&
-      sourceCol.id !== destCol.id
+      originalSourceCol &&
+      originalSourceCol.id !== destCol.id
     ) {
       // Get card position from the DOM for confetti origin
       const el = document.getElementById(activeId)
