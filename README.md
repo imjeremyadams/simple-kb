@@ -50,4 +50,4 @@ npm test
 
 ## AI-assisted development
 
-This project was built using [Claude Code](https://claude.ai/code) to demonstrate AI-assisted development at a meetup. The entire codebase — types, data layer, components, drag-and-drop, glassmorphism theme, celebration effects, tests, and documentation — was generated through conversational iteration with Claude using the [globalcoder-workflow](https://github.com/globalcoder-marketplace/globalcoder-workflow) skill system for structured brainstorming, planning, and execution.
+This project was built using [Claude Code](https://claude.ai/code) to demonstrate AI-assisted development at a meetup. The entire codebase — types, data layer, components, drag-and-drop, glassmorphism theme, celebration effects, tests, and documentation — was generated through conversational iteration with Claude using the [globalcoder-workflow](https://github.com/imjeremyadams/globalcoder-workflow) skill system for structured brainstorming, planning, and execution.
