@@ -1,6 +1,8 @@
 # Simple KB
 
-A fully functional Kanban board built from scratch in a single session to demonstrate AI-assisted development at [AI Collective Springfield MO](https://www.meetup.com/ai-collective-springfield-mo/).
+A fully functional Kanban board built from scratch in a single session to demonstrate AI-assisted development at [AI Collective Springfield MO](https://luma.com/ai-collective-sgf).
+
+**Live demo:** [simple-kb.vercel.app](https://simple-kb.vercel.app/)
 
 ## Features
 
