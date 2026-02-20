@@ -18,7 +18,7 @@ describe("createDefaultBoard", () => {
 describe("saveBoard / loadBoard", () => {
   it("round-trips a board through localStorage", () => {
     const board: Board = {
-      columns: [{ id: "col-1", title: "Backlog", cardIds: ["card-1"] }],
+      columns: [{ id: "col-1", title: "Backlog", color: "#3b82f6", cardIds: ["card-1"] }],
       cards: { "card-1": { id: "card-1", title: "Test card", description: "" } },
     }
     saveBoard(board)

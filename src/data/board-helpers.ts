@@ -47,12 +47,29 @@ export function moveCard(
   }
 }
 
-export function addColumn(board: Board, title: string): Board {
+export const COLUMN_COLORS = [
+  "#3b82f6", // blue
+  "#f59e0b", // amber
+  "#22c55e", // green
+  "#8b5cf6", // violet
+  "#ec4899", // pink
+  "#06b6d4", // cyan
+  "#f97316", // orange
+  "#6366f1", // indigo
+]
+
+export function nextColumnColor(board: Board): string {
+  const lastColor = board.columns.at(-1)?.color
+  const lastIndex = lastColor ? COLUMN_COLORS.indexOf(lastColor) : -1
+  return COLUMN_COLORS[(lastIndex + 1) % COLUMN_COLORS.length]
+}
+
+export function addColumn(board: Board, title: string, color: string): Board {
   return {
     ...board,
     columns: [
       ...board.columns,
-      { id: crypto.randomUUID(), title, cardIds: [] },
+      { id: crypto.randomUUID(), title, color, cardIds: [] },
     ],
   }
 }

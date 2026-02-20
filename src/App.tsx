@@ -12,7 +12,7 @@ import {
 } from "@dnd-kit/core"
 import { loadBoard, saveBoard } from "./data/storage"
 import { celebrate } from "./lib/celebrate"
-import { addCard, moveCard, addColumn, deleteColumn } from "./data/board-helpers"
+import { addCard, moveCard, addColumn, deleteColumn, nextColumnColor } from "./data/board-helpers"
 import type { Board, Card } from "./types"
 import { Header } from "./components/Header"
 import { KanbanColumn } from "./components/KanbanColumn"
@@ -33,7 +33,7 @@ export default function App() {
   }
 
   function handleAddColumn(title: string) {
-    update(addColumn(board, title))
+    update(addColumn(board, title, nextColumnColor(board)))
   }
 
   function handleDeleteColumn(columnId: string) {

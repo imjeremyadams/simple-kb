@@ -1,12 +1,12 @@
 import { describe, it, expect } from "vitest"
-import { addCard, moveCard, addColumn, deleteColumn } from "../board-helpers"
+import { addCard, moveCard, addColumn, deleteColumn, COLUMN_COLORS, nextColumnColor } from "../board-helpers"
 import type { Board } from "../../types"
 
 function makeBoard(): Board {
   return {
     columns: [
-      { id: "col-1", title: "To Do", cardIds: [] },
-      { id: "col-2", title: "Done", cardIds: [] },
+      { id: "col-1", title: "To Do", color: "#3b82f6", cardIds: [] },
+      { id: "col-2", title: "Done", color: "#22c55e", cardIds: [] },
     ],
     cards: {},
   }
@@ -51,12 +51,29 @@ describe("moveCard", () => {
 })
 
 describe("addColumn", () => {
-  it("appends a new column", () => {
+  it("appends a new column with the given color", () => {
     const board = makeBoard()
-    const next = addColumn(board, "In Review")
+    const next = addColumn(board, "In Review", "#8b5cf6")
     expect(next.columns).toHaveLength(3)
     expect(next.columns[2].title).toBe("In Review")
+    expect(next.columns[2].color).toBe("#8b5cf6")
     expect(next.columns[2].cardIds).toEqual([])
+  })
+})
+
+describe("nextColumnColor", () => {
+  it("cycles to the next color after the last column", () => {
+    const board = makeBoard()
+    // Last column has green (#22c55e) which is index 2, so next should be index 3 (violet)
+    expect(nextColumnColor(board)).toBe(COLUMN_COLORS[3])
+  })
+
+  it("wraps around the palette", () => {
+    const board: Board = {
+      columns: [{ id: "col-1", title: "Test", color: COLUMN_COLORS[COLUMN_COLORS.length - 1], cardIds: [] }],
+      cards: {},
+    }
+    expect(nextColumnColor(board)).toBe(COLUMN_COLORS[0])
   })
 })
 
