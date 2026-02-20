@@ -91,34 +91,42 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-zinc-900 flex flex-col">
-      <Header onAddColumn={handleAddColumn} />
-      <DndContext
-        sensors={sensors}
-        collisionDetection={closestCorners}
-        onDragStart={handleDragStart}
-        onDragOver={handleDragOver}
-        onDragEnd={handleDragEnd}
-      >
-        <div className="flex-1 flex gap-4 p-6 pt-0 overflow-x-auto items-start">
-          {board.columns.map((col) => (
-            <KanbanColumn
-              key={col.id}
-              column={col}
-              cards={col.cardIds.map((id) => board.cards[id]).filter(Boolean)}
-              onAddCard={(title, desc) => handleAddCard(col.id, title, desc)}
-              onDeleteColumn={() => handleDeleteColumn(col.id)}
-            />
-          ))}
-        </div>
-        <DragOverlay>
-          {activeCard ? (
-            <div className="bg-zinc-700 rounded-lg p-3 shadow-lg opacity-90 w-72">
-              <p className="text-sm font-medium text-zinc-100">{activeCard.title}</p>
-            </div>
-          ) : null}
-        </DragOverlay>
-      </DndContext>
+    <div className="min-h-screen flex flex-col relative">
+      {/* Gradient mesh background */}
+      <div className="mesh-background">
+        <div className="mesh-blob-teal" />
+      </div>
+
+      {/* Content layer */}
+      <div className="relative z-10 flex-1 flex flex-col min-h-screen">
+        <Header onAddColumn={handleAddColumn} />
+        <DndContext
+          sensors={sensors}
+          collisionDetection={closestCorners}
+          onDragStart={handleDragStart}
+          onDragOver={handleDragOver}
+          onDragEnd={handleDragEnd}
+        >
+          <div className="flex-1 flex gap-4 p-6 pt-0 overflow-x-auto items-start">
+            {board.columns.map((col) => (
+              <KanbanColumn
+                key={col.id}
+                column={col}
+                cards={col.cardIds.map((id) => board.cards[id]).filter(Boolean)}
+                onAddCard={(title, desc) => handleAddCard(col.id, title, desc)}
+                onDeleteColumn={() => handleDeleteColumn(col.id)}
+              />
+            ))}
+          </div>
+          <DragOverlay>
+            {activeCard ? (
+              <div className="bg-white/15 backdrop-blur-xl border border-white/10 rounded-xl p-3 shadow-xl shadow-blue-500/20 w-72">
+                <p className="text-sm font-medium text-white">{activeCard.title}</p>
+              </div>
+            ) : null}
+          </DragOverlay>
+        </DndContext>
+      </div>
     </div>
   )
 }
