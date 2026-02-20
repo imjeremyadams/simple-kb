@@ -30,14 +30,14 @@ export function Header({ onAddColumn }: Props) {
           />
           <button
             type="submit"
-            className="bg-blue-600 hover:bg-blue-500 text-white text-sm px-3 py-1 rounded transition-colors"
+            className="bg-blue-600 hover:bg-blue-500 text-white text-sm px-3 py-1 rounded shadow-md shadow-blue-500/25 transition-all"
           >
             Add
           </button>
           <button
             type="button"
             onClick={() => setAdding(false)}
-            className="text-zinc-400 hover:text-zinc-200 text-sm transition-colors"
+            className="text-white/40 hover:text-white/70 text-sm transition-colors"
           >
             Cancel
           </button>

@@ -22,11 +22,11 @@ export function KanbanCard({ card }: Props) {
       style={style}
       {...attributes}
       {...listeners}
-      className="bg-zinc-700 rounded-lg p-3 shadow-sm cursor-grab active:cursor-grabbing"
+      className="bg-white/10 border border-white/5 rounded-xl p-3 cursor-grab active:cursor-grabbing hover:-translate-y-0.5 hover:bg-white/15 hover:shadow-md hover:shadow-blue-500/10 transition-all duration-200"
     >
-      <p className="text-sm font-medium text-zinc-100">{card.title}</p>
+      <p className="text-sm font-medium text-white">{card.title}</p>
       {card.description && (
-        <p className="text-xs text-zinc-400 mt-1">{card.description}</p>
+        <p className="text-xs text-white/50 mt-1">{card.description}</p>
       )}
     </div>
   )

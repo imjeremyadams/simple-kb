@@ -22,7 +22,7 @@ export function AddCardForm({ onAdd }: Props) {
     return (
       <button
         onClick={() => setOpen(true)}
-        className="w-full text-left text-sm text-zinc-400 hover:text-zinc-200 p-2 rounded hover:bg-zinc-700/50 transition-colors"
+        className="w-full text-left text-sm text-white/40 hover:text-white/70 p-2 rounded hover:bg-white/10 transition-colors"
       >
         + Add card
       </button>
@@ -36,26 +36,26 @@ export function AddCardForm({ onAdd }: Props) {
         value={title}
         onChange={(e) => setTitle(e.target.value)}
         placeholder="Card title"
-        className="w-full bg-zinc-700 rounded px-2 py-1.5 text-sm text-zinc-100 placeholder-zinc-500 outline-none focus:ring-2 focus:ring-blue-500"
+        className="w-full bg-white/10 border border-white/10 rounded px-2 py-1.5 text-sm text-white placeholder-white/30 outline-none focus:ring-2 focus:ring-blue-500/50"
       />
       <textarea
         value={description}
         onChange={(e) => setDescription(e.target.value)}
         placeholder="Description (optional)"
         rows={2}
-        className="w-full bg-zinc-700 rounded px-2 py-1.5 text-sm text-zinc-100 placeholder-zinc-500 outline-none focus:ring-2 focus:ring-blue-500 resize-none"
+        className="w-full bg-white/10 border border-white/10 rounded px-2 py-1.5 text-sm text-white placeholder-white/30 outline-none focus:ring-2 focus:ring-blue-500/50 resize-none"
       />
       <div className="flex gap-2">
         <button
           type="submit"
-          className="bg-blue-600 hover:bg-blue-500 text-white text-sm px-3 py-1 rounded transition-colors"
+          className="bg-blue-600 hover:bg-blue-500 text-white text-sm px-3 py-1 rounded shadow-md shadow-blue-500/25 transition-all"
         >
           Add
         </button>
         <button
           type="button"
           onClick={() => setOpen(false)}
-          className="text-zinc-400 hover:text-zinc-200 text-sm px-3 py-1 transition-colors"
+          className="text-white/40 hover:text-white/70 text-sm px-3 py-1 transition-colors"
         >
           Cancel
         </button>
